@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>طلبات الشحن</title>
+</head>
+<body>
+    <h1>طلبات الشحن</h1>
+    <a href="/add">أضف طلب جديد</a>
+    <ul>
+        {% for shipment in shipments %}
+            <li>
+                <b>{{ shipment.client }}</b> - {{ shipment.address }} - الحالة: {{ shipment.status }}
+                [<a href="/edit/{{ shipment.id }}">تعديل</a> | <a href="/delete/{{ shipment.id }}">حذف</a>]
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
