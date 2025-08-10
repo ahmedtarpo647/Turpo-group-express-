@@ -1,0 +1,17 @@
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تعديل طلب شحن</title>
+</head>
+<body>
+    <h1>تعديل الطلب</h1>
+    <form method="post">
+        العميل: <input type="text" name="client" value="{{ shipment.client }}" required><br>
+        العنوان: <input type="text" name="address" value="{{ shipment.address }}" required><br>
+        الحالة: <input type="text" name="status" value="{{ shipment.status }}" required><br>
+        <button type="submit">تحديث</button>
+    </form>
+    <a href="/">العودة للطلبات</a>
+</body>
+</html>
