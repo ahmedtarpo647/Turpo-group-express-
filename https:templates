@@ -1,0 +1,64 @@
+1. `index.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>طلبات الشحن</title>
+</head>
+<body>
+    <h1>طلبات الشحن</h1>
+    <a href="/add">أضف طلب جديد</a>
+    <ul>
+        {% for shipment in shipments %}
+            <li>
+                <b>{{ shipment.client }}</b> - {{ shipment.address }} - الحالة: {{ shipment.status }}
+                [<a href="/edit/{{ shipment.id }}">تعديل</a> | <a href="/delete/{{ shipment.id }}">حذف</a>]
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
+
+2. `add.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>إضافة طلب شحن</title>
+</head>
+<body>
+    <h1>إضافة طلب جديد</h1>
+    <form method="post">
+        العميل: <input type="text" name="client" required><br>
+        العنوان: <input type="text" name="address" required><br>
+        الحالة: <input type="text" name="status" required><br>
+        <button type="submit">حفظ</button>
+    </form>
+    <a href="/">العودة للطلبات</a>
+</body>
+</html>
+```
+
+3. `edit.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تعديل طلب شحن</title>
+</head>
+<body>
+    <h1>تعديل الطلب</h1>
+    <form method="post">
+        العميل: <input type="text" name="client" value="{{ shipment.client }}" required><br>
+        العنوان: <input type="text" name="address" value="{{ shipment.address }}" required><br>
+        الحالة: <input type="text" name="status" value="{{ shipment.status }}" required><br>
+        <button type="submit">تحديث</button>
+    </form>
+    <a href="/">العودة للطلبات</a>
+</body>
+</html>
+```
